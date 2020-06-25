@@ -1,4 +1,16 @@
-[![Build Status](https://travis-ci.org/WebAssembly/spec.svg?branch=master)](https://travis-ci.org/WebAssembly/spec)
+[![Build Status](https://travis-ci.org/WebAssembly/instrument-tracing.svg?branch=master)](https://travis-ci.org/WebAssembly/instrument-tracing)
+
+# Instrument and Tracing Technology Proposal for WebAssembly
+
+This repository is a clone of [github.com/WebAssembly/spec/](https://github.com/WebAssembly/spec/).
+It is meant for discussion, prototype specification and implementation of a proposal to
+add support for instrumentation and tracing to WebAssembly.
+
+* See the [overview](proposals/instrument-tracing/Overview.md) for a summary of the proposal.
+
+* See the [modified spec](https://webassembly.github.io/instrument-tracing/) for details.
+
+Original `README` from upstream repository follows...
 
 # spec
 
