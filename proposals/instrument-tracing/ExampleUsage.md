@@ -154,7 +154,7 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
 
 
   ;; inserted trace instruction with an immediate value of 0x12
-  (trace_instruction 18)
+  (trace_instruction 17)
  )
 
 ```
