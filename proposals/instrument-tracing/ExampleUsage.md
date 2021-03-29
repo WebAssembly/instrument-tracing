@@ -6,8 +6,6 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
 
 ```wasm
 (module
-  ;; Try to lock a mutex at the given address.
-  ;; Returns 1 if the mutex was successfully locked, and 0 otherwise.
   (func $saxpy (export "saxpy")
   ;; out ptr, scalar, x ptr, y ptr, size
   (param $0 i32)
