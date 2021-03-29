@@ -19,6 +19,7 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
   (local $7 i32)
 
   ;; inserted trace instruction with an immediate value of 0x11
+  ;; start tracing
   (trace_instruction 17)
 
   ;; saxpy implementation
@@ -153,7 +154,8 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
   )
 
 
-  ;; inserted trace instruction with an immediate value of 0x12
+  ;; inserted trace instruction with an immediate value of 0x11
+  ;; stop tracing
   (trace_instruction 17)
  )
 
