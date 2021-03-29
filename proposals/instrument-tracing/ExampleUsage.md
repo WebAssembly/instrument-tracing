@@ -2,7 +2,7 @@
 
 ## Code
 
-Here is an example of an example kernel (SAXPY) surrounded by trace instructions
+Here is an example kernel (SAXPY) surrounded by trace instructions
 
 ```wasm
 (module
@@ -227,6 +227,12 @@ WebAssembly.instantiateStreaming(fetch("saxpy.wasm"))
 
 ## Tracing
 
+### Current Problem
+
 Running the above code in the browser, we can observe the performance in a number of ways. We can use instruction tracing tools such as SDE to view native instructions executed. Using internal browser tracing, we can observe the effect of the code in terms of time. Both of these suffer from being too high of granularity. The traces are started and stopped manually and may or may not actually contain the code we wanted to observe. In the case of the instruction level trace, millions of instructions may be executed but we only care about a handful. In the case of a browser trace, we can maybe see what piece of code is executing, but not beyond a function level (ie we can see that `saxpy()` is slow, but not what is inside of `saxpy()` that makes it slow). 
 
-These trace instructions provide a lower level of granularity that can be placed in production code. With no overhead and no other program changes (stack effects), they can be added and removed from code at will to allow tracing in both a development setting and on production sites. Since they execute what amounts to a NOP for all architecture, they have no impact on the performance of the code. For an instruction level trace, that `NOP` can be used as a trigger to start and stop the collection of data, giving just the code we want to look at. For a browser trace, it can serve multiple purposes. They can act as a breakpoint that can be toggled (similar to the `JS` `debugger` statement) or as an indicator to a profiler that it should start or stop a profile. The associated immediate values function as a id for each trace instruction, allowing tools to make smarter decisions such as `start after seeing ID 17` and `stop after seeing 4 ID 18's`.
+### Trace Instruction Solution
+
+The proposed trace instructions provide a lower level of granularity that can be placed in production code. With no overhead and no other program changes (stack effects), they can be added and removed from code at will to allow tracing in both a development setting and on production sites since they execute what amounts to a NOP for all architectures, they have no impact on the performance of the code.
+
+For an instruction level trace, this can be used as a trigger to start and stop the collection of data, giving just the code we want to look at. For a browser trace, it can serve multiple purposes. It can act as a breakpoint that can be toggled (similar to the `JS` `debugger` statement) or as an indicator to a profiler that it should start or stop a profile. The associated immediate values function as a id for each trace instruction. This allows tools to make smarter decisions such as `start after 'seeing' ID 17` and `stop after 'seeing' 4 ID 18's`.
