@@ -20,6 +20,8 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
 
   ;; inserted trace instruction with an immediate value of 0x11
   ;; start tracing
+  ;; this would be encoded as a byte offset in a custom section
+  ;; it is shown in this way for clarity
   (trace_instruction 17)
 
   ;; saxpy implementation
@@ -156,6 +158,8 @@ Here is an example kernel (SAXPY) surrounded by trace instructions
 
   ;; inserted trace instruction with an immediate value of 0x11
   ;; stop tracing
+  ;; this would be encoded as a byte offset in a custom section
+  ;; it is shown in this way for clarity
   (trace_instruction 17)
  )
 
@@ -235,4 +239,4 @@ Running the above code in the browser, we can observe the performance in a numbe
 
 The proposed trace instructions provide a lower level of granularity that can be placed in production code. With no overhead and no other program changes (stack effects), they can be added and removed from code at will to allow tracing in both a development setting and on production sites since they execute what amounts to a NOP for all architectures, they have no impact on the performance of the code.
 
-For an instruction level trace, this can be used as a trigger to start and stop the collection of data, giving just the code we want to look at. For a browser trace, it can serve multiple purposes. It can act as a breakpoint that can be toggled (similar to the `JS` `debugger` statement) or as an indicator to a profiler that it should start or stop a profile. The associated immediate values function as a id for each trace instruction. This allows tools to make smarter decisions such as `start after 'seeing' ID 17` and `stop after 'seeing' 4 ID 18's`.
+For an native instruction level trace, this can be used as a trigger to start and stop the collection of data, giving just the code we want to look at. For a browser trace, it can serve multiple purposes. It can act as a breakpoint that can be toggled (similar to the `JS` `debugger` statement) or as an indicator to a profiler that it should start or stop a profile. The associated immediate values function as a id for each trace instruction. This allows tools to make smarter decisions such as `start after 'seeing' ID 17` and `stop after 'seeing' 4 ID 18's`.

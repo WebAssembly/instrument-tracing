@@ -1,10 +1,18 @@
 # Tooling
 
-With or without tools activated, there should be no change to the execution results code with the trace instruction. 
+## Code Generation
+
+The custom section is inserted from a compiler intrinsic, `__builtin_wasm_trace(ID)`. This translates into a byte offset with an immediate value that can be stored into the custom section.
+
+## Tracing
+
+With or without tracing tools activated, there should be no change to the execution results with the trace instruction. 
 
 With a tool attached, you should be able to configure how the resulting trace is collected, but the result of the code should stay the same.
 
-## Example Code
+### Tool Trace Example
+
+**Note**: This WASM module is written in pseudo-code, trace instructions are encoded as custom sections with byte offsets, however this illustrates the point more clearly.
 
 ```wasm
 (module
