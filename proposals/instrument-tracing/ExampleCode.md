@@ -41,9 +41,9 @@ Now suppose we want to add a trace instruction.
 
 ```c
 int add(int a, int b) {
-    __builtin_wasm_trace(17);
+    __builtin_wasm_trace_instruction (17);
     int c = a + b;
-    __builtin_wasm_trace(17);
+    __builtin_wasm_trace_instruction (17);
     return c;
 }
 ```

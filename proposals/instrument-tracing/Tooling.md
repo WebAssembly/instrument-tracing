@@ -2,7 +2,7 @@
 
 ## Code Generation
 
-The custom section is inserted from a compiler intrinsic, `__builtin_wasm_trace(ID)`. This translates into a byte offset with an immediate value that can be stored into the custom section.
+The custom section is inserted from a compiler intrinsic, `__builtin_wasm_trace_instruction (ID)`. This translates into a byte offset with an immediate value that can be stored into the custom section.
 
 ## Tracing
 
